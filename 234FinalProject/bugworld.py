@@ -3,6 +3,8 @@ import numpy as np
 import random
 import time
 from the_terrarium import *
+from split_bug import *
+
 
 from math          import pi, sin, cos, atan2, sqrt
 
@@ -153,9 +155,11 @@ def main():
         for i in range(0,len(polygon)):
             visual.drawEdge(polygon[i-1], polygon[i], 'r')
     #visual.drawPath(bug0(course3, startnode, goalnode),color = (0,0,1))
-    visual.drawPath(bouncy_ball_bug(course3, startnode, goalnode),color = (0,1,0))
+    # visual.drawPath(bouncy_ball_bug(course3, startnode, goalnode),color = (0,1,0))
     #visual.drawPath(bug1(course3, startnode, goalnode),color = (0,1,0))
-    #visual.drawPath(bug2(course3, startnode, goalnode),color = (0,1,0))
+    # visual.drawPath(bug2(course3, startnode, goalnode),color = (0,1,0))
+    visual.drawPath(split_bug(course3, startnode, goalnode),color = (0,1,0))
+
 
 
 

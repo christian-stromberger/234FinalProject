@@ -18,7 +18,7 @@ Bug 2 - midline
 
 Alternating bug (Bug 2 bug goes left and right) ( Aiden)
 
-Split bug (like bug 2 splits everytime there is a decision) (Aiden)
+Split bug (Phrophet bug) (like bug 2 splits everytime there is a decision) (Aiden)
 
 Bouncy Ball Bug (Christian)
 
