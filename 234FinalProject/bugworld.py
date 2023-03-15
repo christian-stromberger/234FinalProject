@@ -121,9 +121,9 @@ def main():
     x = np.linspace(0,np.pi*2,25)
     for i in range(0,len(x)):
         if(i%2==0):
-            poly1.append((5*np.cos(x[i])+7,5*np.sin(x[i])+5.01))
+            poly1.append((5*np.cos(x[i])+7,5*np.sin(x[i])+5.1))
         else:
-            poly1.append((2*np.cos(x[i])+7,2*np.sin(x[i])+5.01))
+            poly1.append((2*np.cos(x[i])+7,2*np.sin(x[i])+5.1))
     
     course3 = [poly1,((0,0), (14,0), (14,10), (0,10))]
     # print(course2)
