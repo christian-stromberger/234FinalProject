@@ -1,0 +1,46 @@
+Bug List
+
+Bug[n](list Polygons, start, goal)
+return 
+
+Rules:
+No global model of the world
+Only local information aquired through sensors
+Inspired by insects
+
+Tunnel bug
+
+Bug 0 - go towards goal, turn right until can continue towards goal
+
+Bug 1 - closest point
+
+Bug 2 - midline
+
+Alternating bug (Bug 2 bug goes left and right) ( Aiden)
+
+Split bug (like bug 2 splits everytime there is a decision) (Aiden)
+
+Bouncy Ball Bug (Christian)
+
+Bug -2 (goes wrong way on midline) (Aiden)
+
+Left-Bug / Right-Bug (Christian)
+
+RandomWalkBug
+
+God Bug (follows optimal path) (no)
+
+Obstacle Bug (goes to nearest obstacle not yet visited loops it, until it sees the goal)  (no)
+
+Lidar Bug (no)
+
+Memory loss bug (has memory loss isses) (no)
+
+Grid Bug (makes a grid)
+
+Backtrack bug (like bug 2 chooses which way to turn by testing both ways) (Pretend to do it, Christian)
+
+Potential Field Bug
+
+
+
