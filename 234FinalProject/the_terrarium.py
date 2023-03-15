@@ -387,12 +387,13 @@ def bug2(polygons, start, end):
 
 def bouncy_ball_bug(polygons, start, end):
     path = [start]
-    heading = random.randint(0,359)
+    heading = random.uniform(0, 2*math.pi)
+    #heading = math.pi/6
     curr_point = start
     segments = generate_segments(polygons)
     tries = 0
     while not can_see_end(polygons, curr_point, end):
-        midline = (curr_point, (curr_point[0]+math.cos(heading)*14, curr_point[1]+math.sin(heading)*10))
+        midline = (curr_point, (curr_point[0]+math.cos(heading)*1400, curr_point[1]+math.sin(heading)*1000))
         intersections = []
         intersecting_segs = []
         for seg in segments:
@@ -411,12 +412,13 @@ def bouncy_ball_bug(polygons, start, end):
         min_seg = None
         for i in range(0, len(intersections)):
             dist = distance(intersections[i], curr_point)
-            if dist < min_dist:
+            if dist < min_dist and dist > .0000000001:
                 min_dist = dist
                 min_point = intersections[i]
                 min_seg = intersecting_segs[i]
 
         path.append(min_point)
+        curr_point = min_point
 
         # now we have the closest intersection point and the corresponding segment
         # now we need to figure out which polygon that segment belongs to
@@ -429,13 +431,13 @@ def bouncy_ball_bug(polygons, start, end):
         # V
         
         heading = get_bounce_angle(min_seg, heading)
+        # print(f'heading {heading}')
         tries = tries + 1
         print(tries)
-        if tries>10:
-            print("sad mode")
+        if tries>1000:
             break
 
-    #path.append(end)
+    path.append(end)
     return path
 
 def can_see_end(polygons, curr_point, end):
@@ -452,28 +454,19 @@ def get_bounce_angle(segment, ball_angle):
     dx = wall_end[0] - wall_start[0]
     dy = wall_end[1] - wall_start[1]
 
-    if dx == 0:
-        # Wall is vertical
-        bounce_angle = math.pi/2 - ball_angle
+    if dx != 0:
+        wall_angle = math.atan2(dy, dx)
     else:
-        wall_slope = dy / dx
-        
-        # Calculate the angle of the wall
-        wall_angle = math.atan(wall_slope)
-        
-        # Calculate the angle of incidence
-        incidence_angle = ball_angle - wall_angle
-        
-        # Calculate the angle of reflection
-        reflection_angle = -incidence_angle
-        
-        # Calculate the angle of the bounce
-        bounce_angle = wall_angle + reflection_angle
-        
-    return bounce_angle
+        wall_angle = math.pi/2
     
+    normal = math.pi/2 + wall_angle
+    incidence = (math.pi-normal) + ball_angle
+    bounce_off  = normal-incidence
 
-        
+    print(f'ball angle {ball_angle} , segment {segment} , wall angle {wall_angle}, normal {normal}, incidence, {incidence}, heading {bounce_off}')
+    # print(bounce_off)
+
+    return(bounce_off)
 
 
 def closest_point_to_polygon(polygon, point):

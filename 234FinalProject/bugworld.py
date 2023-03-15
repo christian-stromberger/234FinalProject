@@ -121,7 +121,7 @@ def main():
     x = np.linspace(0,np.pi*2,25)
     for i in range(0,len(x)):
         if(i%2==0):
-            poly1.append((5*np.cos(x[i])+7,5*np.sin(x[i])+5.1))
+            poly1.append((4.5*np.cos(x[i])+7,4.5*np.sin(x[i])+5.1))
         else:
             poly1.append((2*np.cos(x[i])+7,2*np.sin(x[i])+5.1))
     
@@ -155,10 +155,10 @@ def main():
         for i in range(0,len(polygon)):
             visual.drawEdge(polygon[i-1], polygon[i], 'r')
     #visual.drawPath(bug0(course3, startnode, goalnode),color = (0,0,1))
-    # visual.drawPath(bouncy_ball_bug(course3, startnode, goalnode),color = (0,1,0))
+    visual.drawPath(bouncy_ball_bug(course3, startnode, goalnode),color = (0,1,0))
     #visual.drawPath(bug1(course3, startnode, goalnode),color = (0,1,0))
     # visual.drawPath(bug2(course3, startnode, goalnode),color = (0,1,0))
-    visual.drawPath(split_bug(course3, startnode, goalnode),color = (0,1,0))
+    # visual.drawPath(split_bug(course3, startnode, goalnode),color = (0,1,0))
 
 
 
