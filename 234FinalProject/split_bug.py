@@ -3,7 +3,7 @@ from bugutils import *
 
 
 def split_bug(polygons, start, end):
-    # algorithm which implements bug 2
+    # algorithm which implements split bug
     # start by moving toward the goal until we hit an obstacle
     segments = generate_segments(polygons)
     
@@ -51,45 +51,8 @@ def split_bug(polygons, start, end):
             p = intersection((path[-1], curr_polygon[index]),(midline))
             path.append(p)
             break
-        # path.append(curr_polygon[index])
+        path.append(curr_polygon[index])
         index = (index + 1) % len(curr_polygon)
-
-    # now we want to do the same thing but in the opposite direction
-    index = curr_polygon.index(min_seg[1])
-    for j in range(0, len(curr_polygon)+1):
-        if(SegmentCrossSegment((path[-1], curr_polygon[index]),(midline))):
-            p = intersection((path[-1], curr_polygon[index]),(midline))
-            path.append(p)
-            break
-        # path.append(curr_polygon[index])
-        index = (index - 1) % len(curr_polygon)
-    
-
-    index = curr_polygon.index(min_seg[1])
-    # now we want to figure out which direction is closer to the midline
-    print(f'{i},{j} test')
-    if(i < j):
-        # we want to go in the positive direction
-        index = curr_polygon.index(min_seg[1])
-        for i in range(0, len(curr_polygon)+1):
-            # if the segment from the last point to the current point intersects the midline
-            if(SegmentCrossSegment((path[-1], curr_polygon[index]),(midline))):
-                p = intersection((path[-1], curr_polygon[index]),(midline))
-                path.append(p)
-                break
-            path.append(curr_polygon[index])
-            index = (index + 1) % len(curr_polygon)
-    # else:
-    #     # we want to go in the negative direction
-    #     print("going in negative direction")
-    #     index = curr_polygon.index(min_seg[1])
-    #     for j in range(0, len(curr_polygon)+1):
-    #         if(SegmentCrossSegment((path[-1], curr_polygon[index]),(midline))):
-    #             p = intersection((path[-1], curr_polygon[index]),(midline))
-    #             path.append(p)
-    #             break
-    #         path.append(curr_polygon[index])
-    #         index = (index - 1) % len(curr_polygon)
     
     # this is a left bug
     # last_branch_point = path[-1]
